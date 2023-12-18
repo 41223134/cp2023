@@ -124,7 +124,145 @@ void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, 
     }
 }
 </pre>
-<p><img alt="" height="133" src="/images/roc_flag_in_gd.png" width="200"/><br/> </p><h1>w5</h1>
+<p><img caption="false" height="200" src="/images/roc_flag_in_gd.png" width="300"/></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">  #include &lt;stdio.h&gt;
+  #include &lt;gd.h&gt;
+  #include &lt;math.h&gt;
+
+  void draw_usa_flag(gdImagePtr img);
+  void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle);
+
+  int main() {
+      int width = 800;
+      int height = (int)(width / 1.9);
+
+      gdImagePtr img = gdImageCreateTrueColor(width, height);
+      gdImageAlphaBlending(img, 0);
+
+      draw_usa_flag(img);
+
+      FILE *outputFile = fopen("./../images/usa_flag.png", "wb");
+      if (outputFile == NULL) {
+          fprintf(stderr, "打開輸出文件時出錯。\n");
+          return 1;
+      }
+
+      gdImagePngEx(img, outputFile, 9);
+      fclose(outputFile);
+      gdImageDestroy(img);
+
+      return 0;
+  }
+
+  void draw_usa_flag(gdImagePtr img) {
+      int width = gdImageSX(img);
+      int height = gdImageSY(img);
+      int red, white, blue;
+      // 國旗顏色
+      red = gdImageColorAllocate(img, 178, 34, 52); // 紅色條紋
+      white = gdImageColorAllocate(img, 255, 255, 255); // 白色條紋
+      blue = gdImageColorAllocate(img, 60, 59, 110); // 藍色區域
+
+      int stripe_height = height / 13;
+      int stripe_width = width;
+      int star_size = (int)(0.0308 * height); // 星星大小
+
+      for (int y = 0; y &lt; height; y += stripe_height) {
+          if (y / stripe_height % 2 == 0) {
+              gdImageFilledRectangle(img, 0, y, stripe_width, y + stripe_height, red);
+          } else {
+              gdImageFilledRectangle(img, 0, y, stripe_width, y + stripe_height, white);
+          }
+      }
+
+      gdImageFilledRectangle(img, 0, 0, width * 2 / 5, stripe_height * 7, blue);
+
+      int star_spacing_x = (int)(0.129 * height); // 橫向星星之間的間距
+      int star_spacing_y = (int)(0.054 * height); // 縱向星星之間的間距
+      int star_start_x = (int)(0.125 * height); // 星星的起始X位置
+      int star_start_y = (int)(0.0485 * height); // 星星的起始Y位置
+
+      for (int row = 0; row &lt; 9; row++) {
+          int starsPerRow = (row % 2 == 0) ? 6 : 5;
+
+          // 計算2、4、6和8排星星的偏移量
+          int offset_x = (row % 2 == 0) ? star_spacing_x / -2 : 0;
+
+          for (int star = 0; star &lt; starsPerRow; star++) {
+              int x = star_start_x + star * star_spacing_x + offset_x;
+
+              // 旋轉角度（以弧度為單位）
+              double rotation_angle = M_PI / 5;
+
+              int y = star_start_y + row * star_spacing_y;
+              draw_star(img, x, y, star_size, white, rotation_angle);
+          }
+      }
+  }
+
+  void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle) {
+      gdPoint points[10];
+
+      for (int i = 0; i &lt; 10; i++) {
+          double angle = M_PI / 2 + i * 2 * M_PI / 10 + rotation_angle;
+          int radius = (i % 2 == 0) ? size : size / 2;
+          points[i].x = x + radius * cos(angle);
+          points[i].y = y + radius * sin(angle);
+      }
+
+      // 用指定的顏色填充星星
+      gdImageFilledPolygon(img, points, 10, color);
+  }</pre>
+<p><img caption="false" height="158" src="/images/usa_flag.png" width="300"/></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+
+void draw_japan_flag(gdImagePtr img);
+
+int main() {
+    int width = 1200;
+    int height = 800;
+
+    gdImagePtr img = gdImageCreateTrueColor(width, height);
+    gdImageAlphaBlending(img, 0);
+
+    draw_japan_flag(img);
+
+    FILE *outputFile = fopen("./../images/japan_flag.png", "wb");
+    if (outputFile == NULL) {
+        fprintf(stderr, "Error opening the output file.\n");
+        return 1;
+    }
+
+    gdImagePngEx(img, outputFile, 9);
+    fclose(outputFile);
+    gdImageDestroy(img);
+
+    return 0;
+}
+
+void draw_japan_flag(gdImagePtr img) {
+    int width = gdImageSX(img);
+    int height = gdImageSY(img);
+    int red, white;
+
+    // 日本國旗的顏色
+    red = gdImageColorAllocate(img, 255, 0, 0); // 紅色
+    white = gdImageColorAllocate(img, 255, 255, 255); // 白色
+
+    // 繪製白色背景
+    gdImageFilledRectangle(img, 0, 0, width, height, white);
+
+    // 計算圓心座標和半徑
+    int circle_center_x = width / 2;
+    int circle_center_y = height / 2;
+    int circle_radius = height / 4; 
+
+    // 繪製紅色圓圈
+    gdImageFilledEllipse(img, circle_center_x, circle_center_y, circle_radius * 2, circle_radius * 2, red);
+}</pre>
+<p><img caption="false" height="200" src="/images/japan_flag.png" width="300"/><br/>  </p><h1>w5</h1>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">// 包含標準輸出入程式庫的標頭文件
 // https://blog.csdn.net/weixin_38468077/article/details/101069365
 // http://www.gnuplot.info/demo/
