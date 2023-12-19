@@ -1,11 +1,11 @@
 { pkgs }: {
     deps = [
-      pkgs.libev
-      pkgs.pandoc
-      pkgs.glibcLocales
-      pkgs.gitFull
-      pkgs.gnuplot
-      pkgs.ncurses.dev
-      pkgs.gd
+  pkgs.qtile
+  pkgs.sudo
+  pkgs.clang_12
+        pkgs.ccls
+        pkgs.gdb
+        pkgs.gnumake
+        pkgs.gnuplot
     ];
 }
