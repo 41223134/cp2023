@@ -2,6 +2,7 @@
         <head>
         <title>cmsite</title>
         <meta charset="utf-8">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -95,6 +96,7 @@ img.add_border {
 </head>
 <body>
 <div class='container'><nav>
+        
     <div class="site-wrap">
 
     <div class="site-mobile-menu">
@@ -140,4 +142,201 @@ img.add_border {
           </div>
           
         </header>
-    </nav><section><h1>SMap</h1><div id="tipue_search_content"></div><ul><li><a href='About.html'>About</a><li><a href='作業內容.html'>作業內容</a><ul><li><a href='w2.html'>w2</a><li><a href='w5.html'>w5</a><li><a href='w6.html'>w6</a><li><a href='w12.html'>w12</a><li><a href='w13.html'>w13</a></li></ul><li><a href='Brython.html'>Brython</a></li></ul></section></div></body></html>
+    <div id="tipue_search_content">w6 << <a href='w6.html'>Previous</a> <a href='w13.html'>Next</a> >> w13<br /><h1>w12</h1>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+int width = 800;
+int height = 600;
+
+gdImagePtr img = gdImageCreateTrueColor(width, height);
+gdImageAlphaBlending(img, 0);
+
+FILE *outputFile = fopen("hellogd.png", "wb");
+if (outputFile == NULL) {
+
+fprintf(stderr, "Error opening the output file.\n");
+
+return 1;
+}
+
+int red = gdImageColorAllocate(img, 255, 0, 0);
+int blue = gdImageColorAllocate(img, 0, 0, 255);
+int black = gdImageColorAllocate(img, 0, 0, 0);
+int white = gdImageColorAllocate(img, 255, 255, 255);
+// 長方形塗色
+gdImageFilledRectangle(img, 0, 0, width, height, white);
+gdImageFilledRectangle(img, 0, 0, (int)width/4, (int)height/4, blue);
+// 橢圓形塗色
+gdImageFilledEllipse(img, (int)width*3/4, (int)height/4, (int)width/4, (int)width/4, red);
+// 橢圓形畫線
+gdImageEllipse(img, (int)width*3/4, (int)height*3/4, (int)width/4, (int)width/4, red);
+// 畫直線
+gdImageLine(img, (int)width/2, (int)height/2, (int)width/2, (int)height/2 + 100, blue);
+
+// 多邊形畫線
+gdPoint points[4];
+points[0].x = (int)width/4;
+points[0].y = (int)height*3/4;
+points[1].x = points[0].x + 100;
+points[1].y = points[0].y;
+points[2].x = points[1].x;
+points[2].y = points[1].y + 100;
+points[3].x = points[2].x - 100;
+points[3].y = points[2].y;
+gdImagePolygon(img, points, 4, black);
+
+// 多邊形塗色
+gdPoint points2[4];
+points2[0].x = (int)width/3;
+points2[0].y = (int)height/2;
+points2[1].x = points2[0].x + 100;
+points2[1].y = points2[0].y;
+points2[2].x = points2[1].x;
+points2[2].y = points2[1].y + 100;
+points2[3].x = points2[2].x - 150;
+points2[3].y = points2[2].y;
+gdImageFilledPolygon(img, points2, 4, red);
+
+gdImagePngEx(img, outputFile, 9);
+fclose(outputFile);
+gdImageDestroy(img);
+return 0;
+}</pre>
+<p></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+
+// Declare the rotation function
+void rotateFilledPolygon(int x_orig, int y_orig, double rotation_ang, gdPoint *points, int num_points) {
+int i;
+double angle_rad = rotation_ang * M_PI / 180.0;
+
+for (i = 0; i &lt; num_points; i++) {
+int x = points[i].x - x_orig;
+int y = points[i].y - y_orig;
+
+points[i].x = x_orig + (int)(x * cos(angle_rad) - y * sin(angle_rad));
+points[i].y = y_orig + (int)(x * sin(angle_rad) + y * cos(angle_rad));
+}
+}
+
+int main() {
+int width = 800;
+int height = 600;
+
+gdImagePtr img = gdImageCreateTrueColor(width, height);
+gdImageAlphaBlending(img, 0);
+
+FILE *outputFile = fopen("hellogd2.png", "wb");
+if (outputFile == NULL) {
+fprintf(stderr, "Error opening the output file.\n");
+return 1;
+}
+
+int red = gdImageColorAllocate(img, 255, 0, 0);
+int blue = gdImageColorAllocate(img, 0, 0, 255);
+int black = gdImageColorAllocate(img, 0, 0, 0);
+int white = gdImageColorAllocate(img, 255, 255, 255);
+
+gdImageFilledRectangle(img, 0, 0, width, height, white);
+gdImageFilledRectangle(img, 0, 0, (int)width / 4, (int)height / 4, blue);
+
+gdImageFilledEllipse(img, (int)width * 3 / 4, (int)height / 4, (int)width / 4, (int)width / 4, red);
+gdImageEllipse(img, (int)width * 3 / 4, (int)height * 3 / 4, (int)width / 4, (int)width / 4, red);
+gdImageLine(img, (int)width / 2, (int)height / 2, (int)width / 2, (int)height / 2 + 100, blue);
+
+gdPoint points[4];
+points[0].x = (int)width / 4;
+points[0].y = (int)height * 3 / 4;
+points[1].x = points[0].x + 100;
+points[1].y = points[0].y;
+points[2].x = points[1].x;
+points[2].y = points[1].y + 100;
+points[3].x = points[2].x - 100;
+points[3].y = points[2].y;
+
+// Call the rotation function multiple times
+for (int i = 0; i &lt; 4; i++) {
+rotateFilledPolygon((int)width / 4 + 50, (int)height * 3 / 4 + 50, 30.0, points, 4);
+gdImagePolygon(img, points, 4, black);
+}
+
+gdPoint points2[4];
+points2[0].x = (int)width / 3;
+points2[0].y = (int)height / 2;
+points2[1].x = points2[0].x + 100;
+points2[1].y = points2[0].y;
+points2[2].x = points2[1].x;
+points2[2].y = points2[1].y + 100;
+points2[3].x = points2[2].x - 150;
+points2[3].y = points2[2].y;
+
+// Call the rotation function multiple times
+for (int i = 0; i &lt; 12; i++) {
+//rotateFilledPolygon((int)width / 3 + 50, (int)height / 2 + 50, 30.0, points2, 4);
+rotateFilledPolygon(500, 200, 30.0, points2, 4);
+gdImageFilledPolygon(img, points2, 4, red);
+}
+
+gdImagePngEx(img, outputFile, 9);
+fclose(outputFile);
+gdImageDestroy(img);
+
+return 0;
+}</pre>
+<p></p>
+<br />w6 << <a href='w6.html'>Previous</a> <a href='w13.html'>Next</a> >> w13</div>
+        
+    <!-- footer -->
+      <div class="container">
+        <div class="row pt-3 mx-auto">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    <!-- for footer -->
+    
+        </div> <!-- for site wrap -->
+            <!-- <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cmsimde/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cmsimde/static/chimper/js/popper.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/aos.js"></script>
+            <!--
+            <script src="../cmsimde/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+            <script src="../cmsimde/static/chimper/js/main.js"></script>
+        
+<!-- 啟用 LaTeX equations 編輯 -->
+  <!-- <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
+    </body></html>
+        

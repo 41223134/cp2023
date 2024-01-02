@@ -1,6 +1,7 @@
 <h1>About</h1>
 <p><a href="https://github.com/mdecycu/cmsite"> https://github.com/mdecycu/cmsite</a></p>
-<h1>w2</h1>
+<h1>作業內容</h1>
+<h2>w2</h2>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">// 包含標準輸出入程式庫的標頭文件
 #include &lt;stdio.h&gt;
 
@@ -58,7 +59,7 @@ int main() {
 <p>cc euler_gnuplot_msd_ex1.c</p>
 <p>./a.out</p>
 <p><img caption="false" height="200" src="/images/motion_plot.png" width="400"/></p>
-<h1>w5</h1>
+<h2>w5</h2>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">// 包含標準輸出入程式庫的標頭文件
 // https://blog.csdn.net/weixin_38468077/article/details/101069365
 // http://www.gnuplot.info/demo/
@@ -107,7 +108,7 @@ int main() {
 <p>cc gnuplot_ex1.c</p>
 <p>./a.out</p>
 <p><img alt="" height="200" src="/images/gnuplot_ex1.png" width="400"/></p>
-<h1>w6</h1>
+<h2>w6</h2>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">// https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China
 // 內政部國旗參考資料: https://www.moi.gov.tw/cp.aspx?n=10621
 // cc roc_flag_in_gd.c -lgd -lm to link with gd and math library
@@ -370,7 +371,154 @@ void draw_japan_flag(gdImagePtr img) {
     gdImageFilledEllipse(img, circle_center_x, circle_center_y, circle_radius * 2, circle_radius * 2, red);
 }</pre>
 <p><img caption="false" height="267" src="/images/japan_flag.png" width="400"/><br/>美國及日本國旗利用ChatGPT生成程式完成</p>
-<h1>w13</h1>
+<h2>w12</h2>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+int width = 800;
+int height = 600;
+
+gdImagePtr img = gdImageCreateTrueColor(width, height);
+gdImageAlphaBlending(img, 0);
+
+FILE *outputFile = fopen("hellogd.png", "wb");
+if (outputFile == NULL) {
+
+fprintf(stderr, "Error opening the output file.\n");
+
+return 1;
+}
+
+int red = gdImageColorAllocate(img, 255, 0, 0);
+int blue = gdImageColorAllocate(img, 0, 0, 255);
+int black = gdImageColorAllocate(img, 0, 0, 0);
+int white = gdImageColorAllocate(img, 255, 255, 255);
+// 長方形塗色
+gdImageFilledRectangle(img, 0, 0, width, height, white);
+gdImageFilledRectangle(img, 0, 0, (int)width/4, (int)height/4, blue);
+// 橢圓形塗色
+gdImageFilledEllipse(img, (int)width*3/4, (int)height/4, (int)width/4, (int)width/4, red);
+// 橢圓形畫線
+gdImageEllipse(img, (int)width*3/4, (int)height*3/4, (int)width/4, (int)width/4, red);
+// 畫直線
+gdImageLine(img, (int)width/2, (int)height/2, (int)width/2, (int)height/2 + 100, blue);
+
+// 多邊形畫線
+gdPoint points[4];
+points[0].x = (int)width/4;
+points[0].y = (int)height*3/4;
+points[1].x = points[0].x + 100;
+points[1].y = points[0].y;
+points[2].x = points[1].x;
+points[2].y = points[1].y + 100;
+points[3].x = points[2].x - 100;
+points[3].y = points[2].y;
+gdImagePolygon(img, points, 4, black);
+
+// 多邊形塗色
+gdPoint points2[4];
+points2[0].x = (int)width/3;
+points2[0].y = (int)height/2;
+points2[1].x = points2[0].x + 100;
+points2[1].y = points2[0].y;
+points2[2].x = points2[1].x;
+points2[2].y = points2[1].y + 100;
+points2[3].x = points2[2].x - 150;
+points2[3].y = points2[2].y;
+gdImageFilledPolygon(img, points2, 4, red);
+
+gdImagePngEx(img, outputFile, 9);
+fclose(outputFile);
+gdImageDestroy(img);
+return 0;
+}</pre>
+<p></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+
+// Declare the rotation function
+void rotateFilledPolygon(int x_orig, int y_orig, double rotation_ang, gdPoint *points, int num_points) {
+int i;
+double angle_rad = rotation_ang * M_PI / 180.0;
+
+for (i = 0; i &lt; num_points; i++) {
+int x = points[i].x - x_orig;
+int y = points[i].y - y_orig;
+
+points[i].x = x_orig + (int)(x * cos(angle_rad) - y * sin(angle_rad));
+points[i].y = y_orig + (int)(x * sin(angle_rad) + y * cos(angle_rad));
+}
+}
+
+int main() {
+int width = 800;
+int height = 600;
+
+gdImagePtr img = gdImageCreateTrueColor(width, height);
+gdImageAlphaBlending(img, 0);
+
+FILE *outputFile = fopen("hellogd2.png", "wb");
+if (outputFile == NULL) {
+fprintf(stderr, "Error opening the output file.\n");
+return 1;
+}
+
+int red = gdImageColorAllocate(img, 255, 0, 0);
+int blue = gdImageColorAllocate(img, 0, 0, 255);
+int black = gdImageColorAllocate(img, 0, 0, 0);
+int white = gdImageColorAllocate(img, 255, 255, 255);
+
+gdImageFilledRectangle(img, 0, 0, width, height, white);
+gdImageFilledRectangle(img, 0, 0, (int)width / 4, (int)height / 4, blue);
+
+gdImageFilledEllipse(img, (int)width * 3 / 4, (int)height / 4, (int)width / 4, (int)width / 4, red);
+gdImageEllipse(img, (int)width * 3 / 4, (int)height * 3 / 4, (int)width / 4, (int)width / 4, red);
+gdImageLine(img, (int)width / 2, (int)height / 2, (int)width / 2, (int)height / 2 + 100, blue);
+
+gdPoint points[4];
+points[0].x = (int)width / 4;
+points[0].y = (int)height * 3 / 4;
+points[1].x = points[0].x + 100;
+points[1].y = points[0].y;
+points[2].x = points[1].x;
+points[2].y = points[1].y + 100;
+points[3].x = points[2].x - 100;
+points[3].y = points[2].y;
+
+// Call the rotation function multiple times
+for (int i = 0; i &lt; 4; i++) {
+rotateFilledPolygon((int)width / 4 + 50, (int)height * 3 / 4 + 50, 30.0, points, 4);
+gdImagePolygon(img, points, 4, black);
+}
+
+gdPoint points2[4];
+points2[0].x = (int)width / 3;
+points2[0].y = (int)height / 2;
+points2[1].x = points2[0].x + 100;
+points2[1].y = points2[0].y;
+points2[2].x = points2[1].x;
+points2[2].y = points2[1].y + 100;
+points2[3].x = points2[2].x - 150;
+points2[3].y = points2[2].y;
+
+// Call the rotation function multiple times
+for (int i = 0; i &lt; 12; i++) {
+//rotateFilledPolygon((int)width / 3 + 50, (int)height / 2 + 50, 30.0, points2, 4);
+rotateFilledPolygon(500, 200, 30.0, points2, 4);
+gdImageFilledPolygon(img, points2, 4, red);
+}
+
+gdImagePngEx(img, outputFile, 9);
+fclose(outputFile);
+gdImageDestroy(img);
+
+return 0;
+}</pre>
+<p></p>
+<h2>w13</h2>
 <p>   在上計算機程式的過程中我遇到許多障礙，不論是網路設定、架設個人網站還是運用程式繪圖，當我們過了期中考還卡在ipv6的網路設定時，老師還是不厭其煩地重頭教好幾次，以及不斷的告訴我們程式對未來的趨勢及對我們的幫助。</p>
 <p>   雖然在課堂中幾乎都聽不懂，在下課後我重複看老師的操作影片，不會的程式就請教ChatGPT慢慢修改成能正確運作的程式，補足進度提升自己的能力，有心了解這堂課的內容對未來真的幫助很大!</p>
 <p></p>
@@ -651,4 +799,4 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <p><!-- 存擋表單結束 --></p>
 <p></p>
 <p><!-- 執行與清除按鈕開始 --></p>
-<p><button id="kw_run2">Run</button> <button id="kw_show_console2">Output</button> <button id="kw_clear_console2">清除輸出區</button><button id="clear_bd2">清除繪</button>  </p>
+<p><button id="kw_run2">Run</button> <button id="kw_show_console2">Output</button> <button id="kw_clear_console2">清除輸出</button> </p>
