@@ -62,6 +62,15 @@ int main() {
 <p>./a.out</p>
 <p><img caption="false" height="200" src="/images/motion_plot.png" width="400"/></p>
 <h2>w5</h2>
+<p>先在replit.nix新增程式庫</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">{ pkgs }: {
+    deps = [
+      pkgs.gnuplot
+      pkgs.ncurses.dev
+      pkgs.gd
+    ];
+}
+</pre>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">// 包含標準輸出入程式庫的標頭文件
 // https://blog.csdn.net/weixin_38468077/article/details/101069365
 // http://www.gnuplot.info/demo/
@@ -111,6 +120,7 @@ int main() {
 <p>./a.out</p>
 <p><img alt="" height="200" src="/images/gnuplot_ex1.png" width="400"/></p>
 <h2>w6</h2>
+<p>ROC</p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">// https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China
 // 內政部國旗參考資料: https://www.moi.gov.tw/cp.aspx?n=10621
 // cc roc_flag_in_gd.c -lgd -lm to link with gd and math library
@@ -235,6 +245,7 @@ void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, 
 }
 </pre>
 <p><img caption="false" height="267" src="/images/roc_flag_in_gd.png" width="400"/></p>
+<p>USA</p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">  #include &lt;stdio.h&gt;
   #include &lt;gd.h&gt;
   #include &lt;math.h&gt;
@@ -324,6 +335,7 @@ void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, 
       gdImageFilledPolygon(img, points, 10, color);
   }</pre>
 <p><img caption="false" height="211" src="/images/usa_flag.png" width="400"/></p>
+<p>JAPAN</p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
@@ -373,6 +385,7 @@ void draw_japan_flag(gdImagePtr img) {
     gdImageFilledEllipse(img, circle_center_x, circle_center_y, circle_radius * 2, circle_radius * 2, red);
 }</pre>
 <p><img caption="false" height="267" src="/images/japan_flag.png" width="400"/></p>
+<p>KOREA</p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
@@ -733,6 +746,7 @@ if (outputFile == NULL) {
       return 0;
   }</pre>
 <p><img alt="" height="267" src="/images/korea_flag.png" width="400"/></p>
+<p>CHINA</p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
@@ -817,6 +831,7 @@ void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotatio
     gdImageFilledPolygon(img, points, 10, color);
 }</pre>
 <p><img alt="" height="267" src="/images/proc_flag.png" width="400"/><br/><br/></p>
+<p>UK</p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
@@ -955,7 +970,8 @@ void draw_uk_flag(gdImagePtr img) {
     gdImageFilledRectangle(img, center_x + 1.5 * cross_width, 0, center_x - 1.5 * cross_width, height, red);
     gdImageFilledRectangle(img, 0, center_y + 1.5 * cross_arm_width, width, center_y - 1.5 * cross_arm_width, red);
 }</pre>
-<p><img alt="" height="200" src="/images/uk_flag.png" width="400"/></p><h2>w12</h2>
+<p><img alt="" height="200" src="/images/uk_flag.png" width="400"/></p>
+<h2>w12</h2>
 <p><img caption="false" height="300" src="/images/Hello.png" width="400"/></p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
