@@ -1,7 +1,8 @@
 <h1>About</h1>
 <p><a href="https://github.com/mdecycu/cmsite"> https://github.com/mdecycu/cmsite</a></p>
 <p><a href="https://github.com/41223134/cp2023">https://github.com/41223134/cp2023</a> (個人倉儲連結)</p>
-<p><a href="https://github.com/hong41223129/cp2023_ag4">https://github.com/hong41223129/cp2023_ag4</a> (分組倉儲連結)</p><h1>作業內容</h1>
+<p><a href="https://github.com/hong41223129/cp2023_ag4">https://github.com/hong41223129/cp2023_ag4</a> (分組倉儲連結)</p>
+<h1>作業內容</h1>
 <h2>w2</h2>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">// 包含標準輸出入程式庫的標頭文件
 #include &lt;stdio.h&gt;
@@ -371,8 +372,590 @@ void draw_japan_flag(gdImagePtr img) {
     // 繪製紅色圓圈
     gdImageFilledEllipse(img, circle_center_x, circle_center_y, circle_radius * 2, circle_radius * 2, red);
 }</pre>
-<p><img caption="false" height="267" src="/images/japan_flag.png" width="400"/><br/>美國及日本國旗利用ChatGPT生成程式完成</p>
-<h2>w12</h2>
+<p><img caption="false" height="267" src="/images/japan_flag.png" width="400"/></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+
+#define WIDTH 800
+#define HEIGHT 600
+#define FILENAME "south_korea_flag.png"
+
+int main() {
+    gdImagePtr im;
+    FILE *pngout;
+    int white, black, red, blue;
+
+    im = gdImageCreate(WIDTH, HEIGHT);
+
+    white = gdImageColorAllocate(im, 255, 255, 255);
+    black = gdImageColorAllocate(im, 0, 0, 0);
+    red = gdImageColorAllocate(im, 205, 0, 0);
+    blue = gdImageColorAllocate(im, 0, 56, 168);
+
+    // Background (white)
+    gdImageFilledRectangle(im, 0, 0, WIDTH, HEIGHT , white);
+
+    // Blue Circle (Yin-Yang Symbol)
+    gdImageFilledArc(im, WIDTH / 2, HEIGHT / 2, WIDTH / 3, HEIGHT / 2, 210, 30, red, gdArc);
+
+    // Red Circle (Yin-Yang Symbol)
+    gdImageFilledArc(im, WIDTH / 2, HEIGHT / 2, WIDTH / 3, HEIGHT / 2, 30, 210, blue, gdArc);
+
+  int circleX = 385;    // 圓心的 X 座標
+  int circleY = 262.5;   // 圓心的 Y 座標
+  int circleRadius = 75;     
+
+  // 繪製圓形
+  gdImageFilledEllipse(im, circleX, circleY, circleRadius * 2, circleRadius * 2, red);
+
+  int circleX2 = 515;    // 圓心的 X 座標
+
+ int circleY2 = 337.5;
+
+  // 繪製圓形
+  gdImageFilledEllipse(im, circleX2, circleY2, circleRadius * 2, circleRadius * 2, blue);
+
+  {
+
+
+  // 起點和終點位置
+
+  int startX = 340;    
+  // 線的起點 X 座標
+
+  int startY = 90;   
+  // 線的起點 Y 座標
+
+  int endX = 200;     
+  // 線的終點 X 座標
+
+  int endY = 260;     
+  // 線的終點 Y 座標
+
+  int lineWidth = 23;  // 線的寬度
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX, startY, endX, endY, black);
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX -35, startY -10, endX -35, endY -10, black);
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX -70, startY -20, endX -70, endY -20, black);
+
+  int startX2 = 213;    
+  // 線的起點 X 座標
+
+  int startY2 = 270;   
+  // 線的起點 Y 座標
+
+  int endX2 = 133;     
+  // 線的終點 X 座標
+
+  int endY2 = 210;     
+  // 線的終點 Y 座標
+
+  int lineWidth2 = 25;  // 線的寬度
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX2 +3, startY2, endX2 +3, endY2, white);
+
+  gdImageSetThickness(im, lineWidth +10);
+gdImageLine(im, startX2 -17, startY2 +9 , endX2 -17, endY2 +9 , white);
+
+  gdImageSetThickness(im, lineWidth );
+gdImageLine(im, startX2 +115, startY2 -145, endX2 +115, endY2 -145, white);
+
+  gdImageSetThickness(im, lineWidth);
+gdImageLine(im, startX2 +120, startY2 -155, endX2 +120, endY2 -155, white);
+
+  gdImageSetThickness(im, lineWidth +12);
+gdImageLine(im, startX2 +145, startY2 -155, endX2 +145, endY2 -155, white);
+}
+  {
+    // 起點和終點位置
+
+  int startX = 330;    
+  // 線的起點 X 座標
+
+  int startY = 520;   
+  // 線的起點 Y 座標
+
+  int endX = 190;     
+  // 線的終點 X 座標
+
+  int endY = 350;     
+  // 線的終點 Y 座標
+
+  int lineWidth = 23;  // 線的寬度
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX, startY, endX, endY, black);
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX -35, startY +10, endX -35, endY +10, black);
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX -70, startY +20, endX -70, endY +20, black);
+
+  int startX2 = 213;    
+  // 線的起點 X 座標
+
+  int startY2 = 330;   
+  // 線的起點 Y 座標
+
+  int endX2 = 133;     
+  // 線的終點 X 座標
+
+  int endY2 = 390;     
+  // 線的終點 Y 座標
+
+  int lineWidth2 = 25;  // 線的寬度
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth +8);
+  gdImageLine(im, startX2 -11, startY2, endX2 -11, endY2, white);
+
+  gdImageSetThickness(im, lineWidth +10);
+gdImageLine(im, startX2 -30, startY2 -9 , endX2 -30, endY2 -9 , white);
+
+  gdImageSetThickness(im, lineWidth );
+gdImageLine(im, startX2 +100, startY2 +150, endX2 +100, endY2 +150, white);
+
+  gdImageSetThickness(im, lineWidth);
+gdImageLine(im, startX2 +120, startY2 +155, endX2 +120, endY2 +155, white);
+
+  gdImageSetThickness(im, lineWidth +14);
+gdImageLine(im, startX2 +145, startY2 +157, endX2 +145, endY2 +157, white);
+
+    gdImageSetThickness(im, lineWidth -10);
+gdImageLine(im, 232, 426, 206, 448, white);
+
+  }
+
+  {
+    // 起點和終點位置
+
+  int startX = 564;    
+  // 線的起點 X 座標
+
+  int startY = 520;   
+  // 線的起點 Y 座標
+
+  int endX = 704;     
+  // 線的終點 X 座標
+
+  int endY = 350;     
+  // 線的終點 Y 座標
+
+  int lineWidth = 23;  // 線的寬度
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX +70, startY +20, endX +70, endY +20, black);
+
+    // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX, startY, endX, endY, black);
+
+    // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX +35, startY +10, endX +35, endY +10, black);
+
+gdImageSetThickness(im, lineWidth -10);
+gdImageLine(im, 624, 400, 734, 490, white);
+
+  int startX2 = 553;    
+  // 線的起點 X 座標
+
+  int startY2 = 330;   
+  // 線的起點 Y 座標
+
+  int endX2 = 633;     
+  // 線的終點 X 座標
+
+  int endY2 = 390;     
+  // 線的終點 Y 座標
+
+  int lineWidth2 = 25;  // 線的寬度
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth +8);
+  gdImageLine(im, startX2 +139, startY2, endX2 +139, endY2, white);
+
+  gdImageSetThickness(im, lineWidth +10);
+gdImageLine(im, startX2 +157, startY2 -9 , endX2 +157, endY2 -9 , white);
+
+  gdImageSetThickness(im, lineWidth);
+gdImageLine(im, startX2 +25, startY2 +155, endX2 +25, endY2 +155, white);
+
+  gdImageSetThickness(im, lineWidth +30);
+gdImageLine(im, startX2 -3, startY2 +170, endX2 , endY2 +170, white);
+  }
+  {
+    // 起點和終點位置
+
+  int startX = 330;    
+  // 線的起點 X 座標
+
+  int startY = 520;   
+  // 線的起點 Y 座標
+
+  int endX = 190;     
+  // 線的終點 X 座標
+
+  int endY = 350;     
+  // 線的終點 Y 座標
+
+  int lineWidth = 23;  // 線的寬度
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX, startY, endX, endY, black);
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX -35, startY +10, endX -35, endY +10, black);
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX -70, startY +20, endX -70, endY +20, black);
+
+  int startX2 = 213;    
+  // 線的起點 X 座標
+
+  int startY2 = 330;   
+  // 線的起點 Y 座標
+
+  int endX2 = 133;     
+  // 線的終點 X 座標
+
+  int endY2 = 390;     
+  // 線的終點 Y 座標
+
+  int lineWidth2 = 25;  // 線的寬度
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth +8);
+  gdImageLine(im, startX2 -11, startY2, endX2 -11, endY2, white);
+
+  gdImageSetThickness(im, lineWidth +10);
+gdImageLine(im, startX2 -30, startY2 -9 , endX2 -30, endY2 -9 , white);
+
+  gdImageSetThickness(im, lineWidth );
+gdImageLine(im, startX2 +100, startY2 +150, endX2 +100, endY2 +150, white);
+
+  gdImageSetThickness(im, lineWidth);
+gdImageLine(im, startX2 +120, startY2 +155, endX2 +120, endY2 +155, white);
+
+  gdImageSetThickness(im, lineWidth +14);
+gdImageLine(im, startX2 +145, startY2 +157, endX2 +145, endY2 +157, white);
+
+    gdImageSetThickness(im, lineWidth -10);
+gdImageLine(im, 232, 426, 206, 448, white);
+
+  }
+  {
+    // 起點和終點位置
+
+  int startX = 564;    
+  // 線的起點 X 座標
+
+  int startY = 97;   
+  // 線的起點 Y 座標
+
+  int endX = 704;     
+  // 線的終點 X 座標
+
+  int endY = 267;     
+  // 線的終點 Y 座標
+
+  int lineWidth = 23;  // 線的寬度
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX +70, startY -20, endX +70, endY -20, black);
+
+    // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX, startY, endX, endY, black);
+
+    gdImageSetThickness(im, lineWidth -10);
+gdImageLine(im, 624, 212, 734, 118, white);
+
+    // 繪製線段
+  gdImageSetThickness(im, lineWidth);
+  gdImageLine(im, startX +35, startY -10, endX +35, endY -10, black);
+
+  int startX2 = 553;    
+  // 線的起點 X 座標
+
+  int startY2 = 277;   
+  // 線的起點 Y 座標
+
+  int endX2 = 633;     
+  // 線的終點 X 座標
+
+  int endY2 = 217;     
+  // 線的終點 Y 座標
+
+  int lineWidth2 = 25;  // 線的寬度
+
+  // 繪製線段
+  gdImageSetThickness(im, lineWidth +8);
+  gdImageLine(im, startX2 +134, startY2, endX2 +134, endY2, white);
+
+  gdImageSetThickness(im, lineWidth +10);
+gdImageLine(im, startX2 +157, startY2 +9 , endX2 +157, endY2 +9 , white);
+
+  gdImageSetThickness(im, lineWidth);
+gdImageLine(im, startX2 +25, startY2 -155, endX2 +25, endY2 -155, white);
+
+    gdImageSetThickness(im, lineWidth +30);
+gdImageLine(im, startX2 -5, startY2 -155, endX2 -5, endY2 -155, white);
+
+  }
+
+    // Save image
+FILE *outputFile = fopen("./../images/korea_flag.png", "wb");
+if (outputFile == NULL) {
+    fprintf(stderr, "Error opening the output file.\n");
+    return 1;
+}
+  gdImagePngEx(im, outputFile, 9);
+      fclose(outputFile);
+      gdImageDestroy(im);
+      return 0;
+  }</pre>
+<p><img alt="" height="267" src="/images/korea_flag.png" width="400"/></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+
+void draw_chinese_flag(gdImagePtr img);
+
+int main() {
+    int width = 300; // 國旗寬度
+    int height = 200; // 國旗高度
+
+    gdImagePtr im = gdImageCreateTrueColor(width, height);
+    gdImageAlphaBlending(im, 0);
+
+    draw_chinese_flag(im);
+
+    FILE *outputFile = fopen("./../images/proc_flag.png", "wb");
+    if (outputFile == NULL) {
+        fprintf(stderr, "打开输出文件时出错。\n");
+        return 1;
+    }
+
+    gdImagePngEx(im, outputFile, 9);
+    fclose(outputFile);
+    gdImageDestroy(im);
+
+    return 0;
+}
+
+// 声明 draw_star 函数
+void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle);
+
+void draw_chinese_flag(gdImagePtr img) {
+    int width = gdImageSX(img);
+    int height = gdImageSY(img);
+    int red, yellow;
+
+    // 國旗顏色
+    red = gdImageColorAllocate(img, 255, 0, 0); // 紅色背景
+    yellow = gdImageColorAllocate(img, 255, 255, 0); // 黃色星星
+
+    // 畫紅色背景
+    gdImageFilledRectangle(img, 0, 0, width, height, red);
+
+    // 設置星星的大小和位置
+    int star_size = (int)(0.28 * height);
+    int star_x = (int)(0.165 * width);
+    int star_y = (int)(0.265 * height);
+
+    // 畫大星星
+    draw_star(img, star_x, star_y, star_size, yellow, 11.0);
+
+    // 繪製小星星，位置根據實際國旗比例計算
+    double radius = 0.15 * height;
+    double angle = 360 / 7 * M_PI / 179.0;
+    double rotation = -M_PI / 7.5;
+    int cx = (int)(0.32 * width);
+    int cy = (int)(0.27 * height);
+
+    for (int i = -1; i &lt; 3; i++) {
+        int x = (int)(cx + radius * cos(i * angle + rotation));
+        int y = (int)(cy + radius * sin(i * angle + rotation));
+        draw_star(img, x, y, 19, yellow, M_PI / 5.0);
+    }
+}
+
+void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle) {
+    gdPoint points[10];
+
+    // 计算星形的五个外点和五个内点
+    double outer_radius = size / 2;
+    double inner_radius = size / 6;
+    double angle = M_PI / 5.0;
+
+    for (int i = 0; i &lt; 10; i++) {
+        double radius = (i % 2 == 0) ? outer_radius : inner_radius;
+        double theta = rotation_angle + i * angle;
+        points[i].x = x + radius * cos(theta);
+        points[i].y = y + radius * sin(theta);
+    }
+
+    // 使用 gdImageFilledPolygon 绘制星形
+    gdImageFilledPolygon(img, points, 10, color);
+}</pre>
+<p><img alt="" height="267" src="/images/proc_flag.png" width="400"/><br/><br/></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+
+void draw_uk_flag(gdImagePtr img);
+void fillTriangle(gdImagePtr img, int x1, int y1, int x2, int y2, int x3, int y3, int color);
+
+int main() {
+    // 设置国旗的宽和高
+    int width = 1200;
+    int height = width / 2;
+
+    // 创建图像
+    gdImagePtr img = gdImageCreateTrueColor(width, height);
+    gdImageAlphaBlending(img, 0);
+
+    // 绘制英国国旗
+    draw_uk_flag(img);
+
+    // 将图像保存到文件
+    FILE *outputFile = fopen("./../images/uk_flag.png", "wb");
+    if (outputFile == NULL) {
+        fprintf(stderr, "打开输出文件时发生错误。\n");
+        return 1;
+    }
+    gdImagePngEx(img, outputFile, 9);
+    fclose(outputFile);
+    gdImageDestroy(img);
+    return 0;
+}
+
+
+
+void draw_uk_flag(gdImagePtr img) {
+    int width = gdImageSX(img);
+    int height = gdImageSY(img);
+
+    int red, white, blue;
+    red = gdImageColorAllocate(img, 204, 0, 0);       // 红色
+    white = gdImageColorAllocate(img, 255, 255, 255); // 白色
+    blue = gdImageColorAllocate(img, 0, 0, 153);      // 蓝色
+
+    gdImageFilledRectangle(img, 0, 0, width, height, blue);
+
+
+  int x1, y1, x2, y2, x3, y3;
+  {
+    int line_thickness = 100;
+    gdImageSetThickness(img, line_thickness);
+
+    int x1, y1, x2, y2, x3, y3;
+
+    // 绘制白色斜线
+    x1 = 0;
+    y1 = 600;
+    x2 = 1200;
+    y2 = 0;
+    gdImageLine(img, x1, y1, x2, y2, white);
+
+    x1 = 0;
+    y1 = 0;
+    x2 = 1200;
+    y2 = 600;
+    gdImageLine(img, x1, y1, x2, y2, white);
+}
+  {
+    int line_thickness = 33;
+    gdImageSetThickness(img, line_thickness);
+
+
+    // 绘制红色斜线
+    x1 = 566;
+    y1 = 300;
+    x2 = 1166;
+    y2 = 0;
+    gdImageLine(img, x1, y1, x2, y2, red);
+
+    x1 = 1233;
+    y1 = 600;
+    x2 = 633;
+    y2 = 300;
+    gdImageLine(img, x1, y1, x2, y2, red);
+
+    x1 = 566;
+    y1 = 300;
+    x2 = -33;
+    y2 = 0;
+    gdImageLine(img, x1, y1, x2, y2, red);
+
+    x1 = 600;
+    y1 = 316.5;
+    x2 = 0;
+    y2 = 616.5;
+    gdImageLine(img, x1, y1, x2, y2, red);
+  }
+  {
+  int line_thickness = 33;
+  gdImageSetThickness(img, line_thickness);
+
+  int x1, y1, x2, y2, x3, y3;
+
+  // 绘制  斜线
+  x1 = 0;
+  y1 = 600;
+  x2 = 1200;
+  y2 = 0;
+  gdImageLine(img, x1, y1, x2, y2, red );
+
+
+  x1 = 1200;
+    y1 = 16.5;
+    x2 = 600;
+    y2 = 316.5;
+    gdImageLine(img, x1, y1, x2, y2, white);
+
+
+  x1 = 0;
+    y1 = 583.5;
+    x2 = 600;
+    y2 = 283.5;
+    gdImageLine(img, x1, y1, x2, y2, white);
+
+
+  }
+
+    // 绘制白色十字
+    int cross_width = width / 32;
+    int cross_arm_width = width / 32;
+    int center_x = width / 2;
+    int center_y = height / 2;
+
+    gdImageFilledRectangle(img, center_x + 2.7 * cross_width, 0, center_x - 2.7 * cross_width, height, white);
+    gdImageFilledRectangle(img, 0, center_y + 2.7 * cross_arm_width, width, center_y - 2.7 * cross_arm_width, white);
+
+    // 绘制红色十字
+    gdImageFilledRectangle(img, center_x + 1.5 * cross_width, 0, center_x - 1.5 * cross_width, height, red);
+    gdImageFilledRectangle(img, 0, center_y + 1.5 * cross_arm_width, width, center_y - 1.5 * cross_arm_width, red);
+}</pre>
+<p><img alt="" height="200" src="/images/uk_flag.png" width="400"/></p><h2>w12</h2>
 <p><img caption="false" height="300" src="/images/Hello.png" width="400"/></p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
@@ -519,10 +1102,12 @@ gdImageDestroy(img);
 
 return 0;
 }</pre>
-<p></p><h2>w13</h2>
+<p></p>
+<h2>w13</h2>
 <p>   在上計算機程式的過程中我遇到許多障礙，不論是網路設定、架設個人網站還是運用程式繪圖，當我們過了期中考還卡在ipv6的網路設定時，老師還是不厭其煩地重頭教好幾次，以及不斷的告訴我們程式對未來的趨勢及對我們的幫助。</p>
 <p>   雖然在課堂中幾乎都聽不懂，在下課後我重複看老師的操作影片，不會的程式就請教ChatGPT慢慢修改成能正確運作的程式，補足進度提升自己的能力，有心了解這堂課的內容對未來真的幫助很大!</p>
 <p></p>
+<h1>各國國旗練習</h1>
 <h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>
