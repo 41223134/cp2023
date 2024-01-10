@@ -1123,6 +1123,63 @@ return 0;
 <p>   在上計算機程式的過程中我遇到許多障礙，不論是網路設定、架設個人網站還是運用程式繪圖，當我們過了期中考還卡在ipv6的網路設定時，老師還是不厭其煩地重頭教好幾次，以及不斷的告訴我們程式對未來的趨勢及對我們的幫助。</p>
 <p>   雖然在課堂中幾乎都聽不懂，在下課後我重複看老師的操作影片，不會的程式就請教ChatGPT慢慢修改成能正確運作的程式，補足進度提升自己的能力，有心了解這堂課的內容對未來真的幫助很大!</p>
 <p></p>
+<h1>w15</h1>
+<p>第一步</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+ 
+void draw_roc_flag(gdImagePtr img);
+ 
+int main() {
+    int width = 1200;
+    int height = (int)(width * 2.0 / 3.0);
+ 
+    gdImagePtr img = gdImageCreateTrueColor(width, height);
+    gdImageAlphaBlending(img, 0);
+ 
+    draw_roc_flag(img);
+ 
+    FILE *outputFile = fopen("roc_flag.png", "wb");
+    if (outputFile == NULL) {
+        fprintf(stderr, "Error opening the output file.\n");
+        return 1;
+    }
+    gdImagePngEx(img, outputFile, 9);
+    fclose(outputFile);
+    gdImageDestroy(img);
+    return 0;
+}
+ 
+void draw_roc_flag(gdImagePtr img) {
+    int width = gdImageSX(img);
+    int height = gdImageSY(img);
+    int red, white, blue;
+    int center_x = (int)(width / 4);
+    int center_y = (int)(height / 4);
+ 
+    red = gdImageColorAllocate(img, 255, 0, 0);
+    white = gdImageColorAllocate(img, 255, 255, 255);
+    blue = gdImageColorAllocate(img, 0, 0, 149);
+ 
+    gdImageFilledRectangle(img, 0, 0, width, height, red);
+    gdImageFilledRectangle(img, 0, 0, (int)(width / 2.0), (int)(height / 2.0), blue);
+ 
+    int A_x = 429;
+    int A_y = 125;
+    int B_x = 279;
+    int B_y = 165;
+    int E_x = 170;
+    int E_y = 274;
+    int D_x = 319;
+    int D_y = 234;
+ 
+    gdImageLine(img, A_x, A_y, B_x, B_y, white);
+    gdImageLine(img, B_x, B_y, E_x, E_y, white);
+    gdImageLine(img, E_x, E_y, D_x, D_y, white);
+    gdImageLine(img, D_x, D_y, A_x, A_y, white);
+}</pre>
+<h4><img alt="" height="267" src="/images/roc_flag.png" width="400"/></h4>
 <h1>各國國旗練習</h1>
 <h1>NOTE</h1>
 <h2>ssh</h2>
