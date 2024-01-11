@@ -2,7 +2,7 @@
         <head>
         <title>cmsite</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -142,26 +142,48 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">1. << <a href='1..html'>Previous</a> <a href='3..html'>Next</a> >> 3.<br /><h1>2.</h1>
+    <div id="tipue_search_content">各國國旗練習 << <a href='各國國旗練習.html'>Previous</a> <a href='NOTE.html'>Next</a> >> NOTE<br /><h1>Italian</h1>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
-
-int main(int argc, char** argv) {
-    // Check for C standard version
-    #if __STDC_VERSION__ &gt;=  201710L
-        printf("We are using C18!\n");
-    #elif __STDC_VERSION__ &gt;= 201112L
-        printf("We are using C11!\n");
-    #elif __STDC_VERSION__ &gt;= 199901L
-        printf("We are using C99!\n");
-    #else
-        printf("We are using C89/C90!\n");
-    #endif
-
-    // Indicate successful execution
+#include &lt;gd.h&gt;
+  
+int main() {
+    int width = 300;  // 宽度
+    int height = 200; // 高度
+  
+    gdImagePtr image = gdImageCreateTrueColor(width, height);
+  
+    if (image == NULL) {
+        printf("Failed to create image.\n");
+        return 1;
+    }
+  
+    // 确定颜色索引
+    int green = gdImageColorAllocate(image, 0, 128, 0);
+    int white = gdImageColorAllocate(image, 255, 255, 255);
+    int red = gdImageColorAllocate(image, 255, 0, 0);
+  
+    // 填充颜色
+    gdImageFilledRectangle(image, 0, 0, width / 3, height, green);
+    gdImageFilledRectangle(image, width / 3, 0, (width / 3) * 2, height, white);
+    gdImageFilledRectangle(image, (width / 3) * 2, 0, width, height, red);
+  
+    FILE *outputFile;
+    outputFile = fopen("./../images/italian_flag.png", "wb");
+  
+    if (outputFile == NULL) {
+        printf("Failed to open file for writing.\n");
+        return 1;
+    }
+  
+    gdImagePng(image, outputFile);
+    fclose(outputFile);
+  
+    gdImageDestroy(image);
+  
     return 0;
 }</pre>
-<p><img alt="" height="44" src="./../images/螢幕擷取畫面 2024-01-10 221113.png" width="200"/></p>
-<br />1. << <a href='1..html'>Previous</a> <a href='3..html'>Next</a> >> 3.</div>
+<p><img alt="" height="200" src="./../images/italian_flag.png" width="300"/></p>
+<br />各國國旗練習 << <a href='各國國旗練習.html'>Previous</a> <a href='NOTE.html'>Next</a> >> NOTE</div>
         
     <!-- footer -->
       <div class="container">

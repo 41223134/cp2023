@@ -119,7 +119,7 @@ int main() {
 <p>./a.out</p>
 <p><img alt="" height="200" src="/images/gnuplot_ex1.png" width="400"/></p>
 <h1>w6</h1>
-<p>ROC</p>
+<h2>ROC</h2>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">// https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China
 // 內政部國旗參考資料: https://www.moi.gov.tw/cp.aspx?n=10621
 // cc roc_flag_in_gd.c -lgd -lm to link with gd and math library
@@ -244,7 +244,7 @@ void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, 
 }
 </pre>
 <p><img caption="false" height="267" src="/images/roc_flag_in_gd.png" width="400"/></p>
-<p>USA</p>
+<h2>USA</h2>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">  #include &lt;stdio.h&gt;
   #include &lt;gd.h&gt;
   #include &lt;math.h&gt;
@@ -334,7 +334,7 @@ void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, 
       gdImageFilledPolygon(img, points, 10, color);
   }</pre>
 <p><img caption="false" height="211" src="/images/usa_flag.png" width="400"/></p>
-<p>JAPAN</p>
+<h2>JAPAN</h2>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
@@ -384,7 +384,7 @@ void draw_japan_flag(gdImagePtr img) {
     gdImageFilledEllipse(img, circle_center_x, circle_center_y, circle_radius * 2, circle_radius * 2, red);
 }</pre>
 <p><img caption="false" height="267" src="/images/japan_flag.png" width="400"/></p>
-<p>KOREA</p>
+<h2>KOREA</h2>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
@@ -745,7 +745,7 @@ if (outputFile == NULL) {
       return 0;
   }</pre>
 <p><img alt="" height="267" src="/images/korea_flag.png" width="400"/></p>
-<p>CHINA</p>
+<h2>CHINA</h2>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
@@ -830,7 +830,7 @@ void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotatio
     gdImageFilledPolygon(img, points, 10, color);
 }</pre>
 <p><img alt="" height="267" src="/images/proc_flag.png" width="400"/><br/><br/></p>
-<p>UK</p>
+<h2>UK</h2>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
@@ -1124,7 +1124,7 @@ return 0;
 <p>   雖然在課堂中幾乎都聽不懂，在下課後我重複看老師的操作影片，不會的程式就請教ChatGPT慢慢修改成能正確運作的程式，補足進度提升自己的能力，有心了解這堂課的內容對未來真的幫助很大!</p>
 <p></p>
 <h1>w15</h1>
-<p>第一步</p>
+<p>第一步，<span>將第二組的 ABED 等四個點的座標, 以直線相連</span></p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
@@ -1181,6 +1181,47 @@ void draw_roc_flag(gdImagePtr img) {
 }</pre>
 <h4><img alt="" height="267" src="/images/roc_flag.png" width="400"/></h4>
 <h1>各國國旗練習</h1>
+<h3>Italian</h3>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+  
+int main() {
+    int width = 300;  // 宽度
+    int height = 200; // 高度
+  
+    gdImagePtr image = gdImageCreateTrueColor(width, height);
+  
+    if (image == NULL) {
+        printf("Failed to create image.\n");
+        return 1;
+    }
+  
+    // 确定颜色索引
+    int green = gdImageColorAllocate(image, 0, 128, 0);
+    int white = gdImageColorAllocate(image, 255, 255, 255);
+    int red = gdImageColorAllocate(image, 255, 0, 0);
+  
+    // 填充颜色
+    gdImageFilledRectangle(image, 0, 0, width / 3, height, green);
+    gdImageFilledRectangle(image, width / 3, 0, (width / 3) * 2, height, white);
+    gdImageFilledRectangle(image, (width / 3) * 2, 0, width, height, red);
+  
+    FILE *outputFile;
+    outputFile = fopen("./../images/italian_flag.png", "wb");
+  
+    if (outputFile == NULL) {
+        printf("Failed to open file for writing.\n");
+        return 1;
+    }
+  
+    gdImagePng(image, outputFile);
+    fclose(outputFile);
+  
+    gdImageDestroy(image);
+  
+    return 0;
+}</pre>
+<p><img alt="" height="200" src="/images/italian_flag.png" width="300"/></p>
 <h1>NOTE</h1>
 <h2>ssh</h2>
 <p>下載putty</p>
