@@ -1320,8 +1320,64 @@ int main() {
 }</pre>
 <p><img caption="false" height="52" src="/images/螢幕擷取畫面 2024-01-11 213653.png" width="250"/></p>
 <h2>6.</h2>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+int main() {
+   int radius;      /* Variable to store the radius of the circle */
+   float area, perimeter;    /* Variables to store the area and perimeter of the circle */
+   radius = 3;      /* Assigning a value to the radius */
+
+   /* Calculating the perimeter of the circle */
+   perimeter = 2 * 3.14 * radius;
+   printf("Perimeter of the Circle = %f inches\n", perimeter);
+
+   /* Calculating the area of the circle */
+   area = 3.14 * radius * radius;
+   printf("Area of the Circle = %f square inches\n", area);
+
+   return(0);
+}</pre>
+<p><img alt="" height="35" src="/images/螢幕擷取畫面 2024-01-11 214312.png" width="200"/></p>
 <h2>7.</h2>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int days, years, weeks;
+
+    days = 7527; // Total number of days
+
+    // Converts days to years, weeks and days
+    years = days/365; // Calculate years
+    weeks = (days % 365)/7; // Calculate weeks
+    days = days - ((years*365) + (weeks*7)); // Calculate remaining days
+
+    // Print the results
+    printf("Years: %d\n", years);
+    printf("Weeks: %d\n", weeks);
+    printf("Days: %d \n", days);
+
+    return 0;
+}</pre>
+<p><img alt="" height="72" src="/images/螢幕擷取畫面 2024-01-11 214621.png" width="200"/></p>
 <h2>8.</h2>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+int main() {
+    // Define an enumeration type 'week'
+    enum week {Sun, Mon, Tue, Wed, Thu, Fri, Sat};
+ 
+    // Print the values of the days using the enumeration constants
+    printf("Sun = %d", Sun);
+    printf("\nMon = %d", Mon);
+    printf("\nTue = %d", Tue);
+    printf("\nWed = %d", Wed);
+    printf("\nThu = %d", Thu);
+    printf("\nFri = %d", Fri);
+    printf("\nSat = %d", Sat);
+ 
+    return 0;
+}</pre>
+<p><img alt="" height="126" src="/images/螢幕擷取畫面 2024-01-11 214822.png" width="200"/></p>
 <h2>9.</h2>
 <h2>10.</h2>
 <h1>Brython</h1>
@@ -1601,4 +1657,4 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <p><!-- 存擋表單結束 --></p>
 <p></p>
 <p><!-- 執行與清除按鈕開始 --></p>
-<p><button id="kw_run2">Run</button> <button id="kw_show_console2">Output</button> <button id="kw_clear_console2">清除輸出</button>  </p>
+<p><button id="kw_run2">Run</button> <button id="kw_show_console2">Output</button> <button id="kw_clear_console2">清除輸出</button> </p>
