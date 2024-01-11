@@ -1274,7 +1274,51 @@ int main()
 }</pre>
 <p><img alt="" height="129" src="/images/螢幕擷取畫面 2024-01-10 221204.png" width="200"/></p>
 <h2>4.</h2>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+int main() 
+{
+    // Declare and initialize character variables
+    char char1 = 'J';
+    char char2 = 'I';
+    char char3 = 'E';
+
+    // Print the original and reversed characters
+    printf("The reverse of %c%c%c is %c%c%c\n",
+        char1, char2, char3,
+        char3, char2, char1);
+
+    return(0);
+}</pre>
+<p><img alt="" height="45" src="/images/螢幕擷取畫面 2024-01-11 213557.png" width="200"/></p>
 <h2>5.</h2>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt; 
+
+/* 
+   Variables to store the width and height of a rectangle in inches 
+*/
+int width;          
+int height;         
+
+int area;           /* Variable to store the area of the rectangle */
+int perimeter;      /* Variable to store the perimeter of the rectangle */
+
+int main() {
+    /* Assigning values to height and width */
+    height = 3;
+    width = 4;
+
+    /* Calculating the perimeter of the rectangle */
+    perimeter = 2*(height + width);
+    printf("Perimeter of the rectangle = %d inches\n", perimeter);
+
+    /* Calculating the area of the rectangle */
+    area = height * width;
+    printf("Area of the rectangle = %d square inches\n", area);
+
+    return(0);
+}</pre>
+<p><img caption="false" height="52" src="/images/螢幕擷取畫面 2024-01-11 213653.png" width="250"/></p>
 <h2>6.</h2>
 <h2>7.</h2>
 <h2>8.</h2>
@@ -1557,4 +1601,4 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <p><!-- 存擋表單結束 --></p>
 <p></p>
 <p><!-- 執行與清除按鈕開始 --></p>
-<p><button id="kw_run2">Run</button> <button id="kw_show_console2">Output</button> <button id="kw_clear_console2">清除輸出</button> </p>
+<p><button id="kw_run2">Run</button> <button id="kw_show_console2">Output</button> <button id="kw_clear_console2">清除輸出</button>  </p>
