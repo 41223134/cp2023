@@ -143,6 +143,41 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">8. << <a href='8..html'>Previous</a> <a href='10..html'>Next</a> >> 10.<br /><h1>9.</h1>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+int main() {
+    int i, j, flag, ip = 0;
+
+    // Print a message indicating the purpose of the program
+    printf("The prime numbers between 1 and 135 are:\n");
+
+    // Loop to check prime numbers from 2 to 135
+    for (i = 5; i &lt;= 135; i++) {
+        flag = 1;
+
+        // Loop to check if i is divisible by any number other than 1 and itself
+        for (j = 5; j &lt;= i / 5 &amp;&amp; flag == 1; j++) {
+            if (i % j == 0) {
+                flag = 0;
+            }
+        }
+
+        // If i is prime, print it
+        if (flag == 1) {
+            printf("%5d ", i);
+            ip++;
+
+            // Print a newline character after every 10 prime numbers
+            if (ip % 10 == 0) {
+                printf("\n");
+            }
+        }
+    }
+
+    printf("\n");
+
+    return 0;
+}</pre>
+<p><img alt="" height="75" src="./../images/螢幕擷取畫面 2024-01-11 220316.png" width="200"/></p>
 <br />8. << <a href='8..html'>Previous</a> <a href='10..html'>Next</a> >> 10.</div>
         
     <!-- footer -->

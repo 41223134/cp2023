@@ -143,6 +143,25 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">9. << <a href='9..html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython<br /><h1>10.</h1>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#define N 10
+
+int main() {
+  char chr;
+  printf("\n");
+
+  // Loop through ASCII values from 65 ('A') to 122 ('z')
+  for (chr = 65; chr &lt;= 122; chr = chr + 1) {
+    // Exclude characters between 'Z' and 'a'
+    if (chr &gt; 90 &amp;&amp; chr &lt; 97)
+      continue;
+
+    printf("[%2d-%c] ", chr, chr);
+  }
+
+  return 0;
+}</pre>
+<p><img caption="false" height="61" src="./../images/螢幕擷取畫面 2024-01-11 220936.png" width="250"/></p>
 <br />9. << <a href='9..html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
         
     <!-- footer -->

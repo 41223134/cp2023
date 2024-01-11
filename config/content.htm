@@ -1379,7 +1379,61 @@ int main() {
 }</pre>
 <p><img alt="" height="126" src="/images/螢幕擷取畫面 2024-01-11 214822.png" width="200"/></p>
 <h2>9.</h2>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+int main() {
+    int i, j, flag, ip = 0;
+
+    // Print a message indicating the purpose of the program
+    printf("The prime numbers between 1 and 135 are:\n");
+
+    // Loop to check prime numbers from 2 to 135
+    for (i = 5; i &lt;= 135; i++) {
+        flag = 1;
+
+        // Loop to check if i is divisible by any number other than 1 and itself
+        for (j = 5; j &lt;= i / 5 &amp;&amp; flag == 1; j++) {
+            if (i % j == 0) {
+                flag = 0;
+            }
+        }
+
+        // If i is prime, print it
+        if (flag == 1) {
+            printf("%5d ", i);
+            ip++;
+
+            // Print a newline character after every 10 prime numbers
+            if (ip % 10 == 0) {
+                printf("\n");
+            }
+        }
+    }
+
+    printf("\n");
+
+    return 0;
+}</pre>
+<p><img alt="" height="75" src="/images/螢幕擷取畫面 2024-01-11 220316.png" width="200"/></p>
 <h2>10.</h2>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#define N 10
+
+int main() {
+  char chr;
+  printf("\n");
+
+  // Loop through ASCII values from 65 ('A') to 122 ('z')
+  for (chr = 65; chr &lt;= 122; chr = chr + 1) {
+    // Exclude characters between 'Z' and 'a'
+    if (chr &gt; 90 &amp;&amp; chr &lt; 97)
+      continue;
+
+    printf("[%2d-%c] ", chr, chr);
+  }
+
+  return 0;
+}</pre>
+<p><img caption="false" height="61" src="/images/螢幕擷取畫面 2024-01-11 220936.png" width="250"/></p>
 <h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>
