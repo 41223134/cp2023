@@ -119,7 +119,7 @@ int main() {
 <p>./a.out</p>
 <p><img alt="" height="200" src="/images/gnuplot_ex1.png" width="400"/></p>
 <h1>w6</h1>
-<h3>ROC</h3>
+<h2>ROC</h2>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">// https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China
 // 內政部國旗參考資料: https://www.moi.gov.tw/cp.aspx?n=10621
 // cc roc_flag_in_gd.c -lgd -lm to link with gd and math library
@@ -244,7 +244,7 @@ void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, 
 }
 </pre>
 <p><img caption="false" height="267" src="/images/roc_flag_in_gd.png" width="400"/></p>
-<h3>USA</h3>
+<h2>USA</h2>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">  #include &lt;stdio.h&gt;
   #include &lt;gd.h&gt;
   #include &lt;math.h&gt;
@@ -334,7 +334,7 @@ void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, 
       gdImageFilledPolygon(img, points, 10, color);
   }</pre>
 <p><img caption="false" height="211" src="/images/usa_flag.png" width="400"/></p>
-<h3>JAPAN</h3>
+<h2>JAPAN</h2>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
@@ -384,7 +384,7 @@ void draw_japan_flag(gdImagePtr img) {
     gdImageFilledEllipse(img, circle_center_x, circle_center_y, circle_radius * 2, circle_radius * 2, red);
 }</pre>
 <p><img caption="false" height="267" src="/images/japan_flag.png" width="400"/></p>
-<h3>KOREA</h3>
+<h2>KOREA</h2>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
@@ -745,7 +745,7 @@ if (outputFile == NULL) {
       return 0;
   }</pre>
 <p><img alt="" height="267" src="/images/korea_flag.png" width="400"/></p>
-<h3>CHINA</h3>
+<h2>CHINA</h2>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
@@ -830,7 +830,7 @@ void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotatio
     gdImageFilledPolygon(img, points, 10, color);
 }</pre>
 <p><img alt="" height="267" src="/images/proc_flag.png" width="400"/><br/><br/></p>
-<h3>UK</h3>
+<h2>UK</h2>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
@@ -1222,6 +1222,80 @@ int main() {
     return 0;
 }</pre>
 <p><img alt="" height="200" src="/images/italian_flag.png" width="300"/></p>
+<h2>THAILAND</h2>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+
+#define WIDTH 600
+#define HEIGHT 400
+
+void drawThaiFlag(gdImagePtr im) {
+    int white = gdImageColorAllocate(im, 255, 255, 255);
+    int indigo = gdImageColorAllocate(im, 46, 49, 146);  // 較深的靛藍色
+    int red = gdImageColorAllocate(im, 255, 0, 0);
+
+    // Draw white background
+    gdImageFilledRectangle(im, 0, 0, WIDTH, HEIGHT, white);
+
+    // Calculate stripe heights based on the specified ratio
+    int totalStripes = 5;
+    int stripeHeights[5] = {1, 1, 2, 1, 1};
+    int totalHeight = 0;
+    for (int i = 0; i &lt; totalStripes; ++i) {
+        totalHeight += stripeHeights[i];
+    }
+
+    // Draw stripes
+    int startY = 0;
+    for (int i = 0; i &lt; totalStripes; ++i) {
+        int stripeHeight = stripeHeights[i] * HEIGHT / totalHeight;
+        switch (i % 5) {
+            case 0: // Red stripe
+                gdImageFilledRectangle(im, 0, startY, WIDTH, startY + stripeHeight, red);
+                break;
+            case 1: // White stripe
+                gdImageFilledRectangle(im, 0, startY, WIDTH, startY + stripeHeight, white);
+                break;
+            case 2: // Indigo stripe (靛藍色)
+                gdImageFilledRectangle(im, 0, startY, WIDTH, startY + stripeHeight, indigo);
+                break;
+            case 3: // White stripe
+                gdImageFilledRectangle(im, 0, startY, WIDTH, startY + stripeHeight, white);
+                break;
+            case 4: // Red stripe
+                gdImageFilledRectangle(im, 0, startY, WIDTH, startY + stripeHeight, red);
+                break;
+        }
+        startY += stripeHeight;
+    }
+}
+
+int main() {
+    gdImagePtr im;
+    FILE *outputFile;
+
+    // Create a new image with specified width and height
+    im = gdImageCreate(WIDTH, HEIGHT);
+
+    // Draw the Thai flag on the image
+    drawThaiFlag(im);
+
+    // Open a file for writing
+    outputFile = fopen("thai_flag.png", "wb");
+
+    // Write the image to the file in PNG format
+    gdImagePng(im, outputFile);
+
+    // Close the file
+    fclose(outputFile);
+
+    // Free the memory used for the image
+    gdImageDestroy(im);
+
+    return 0;
+}</pre>
+<p><img caption="false" height="201" src="/images/thai_flag.png" width="300"/></p>
 <h1>NOTE</h1>
 <h2>ssh</h2>
 <p>下載putty</p>
@@ -1378,7 +1452,7 @@ int main() {
 
    return(0);
 }</pre>
-<p><img alt="" height="35" src="/images/螢幕擷取畫面 2024-01-11 214312.png" width="200"/></p>
+<p><img caption="false" height="44" src="/images/螢幕擷取畫面 2024-01-11 214312.png" width="250"/></p>
 <h2>7.</h2>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 
@@ -1454,7 +1528,7 @@ int main() {
 
     return 0;
 }</pre>
-<p><img alt="" height="75" src="/images/螢幕擷取畫面 2024-01-11 220316.png" width="200"/></p>
+<p><img caption="false" height="94" src="/images/螢幕擷取畫面 2024-01-11 220316.png" width="250"/></p>
 <h2>10.</h2>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #define N 10
@@ -1474,7 +1548,7 @@ int main() {
 
   return 0;
 }</pre>
-<p><img caption="false" height="61" src="/images/螢幕擷取畫面 2024-01-11 220936.png" width="250"/></p>
+<p><img caption="false" height="97" src="/images/螢幕擷取畫面 2024-01-11 220936.png" width="400"/></p>
 <h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>
