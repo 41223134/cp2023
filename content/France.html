@@ -142,17 +142,39 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">ssh << <a href='ssh.html'>Previous</a> <a href='ANSIC.html'>Next</a> >> ANSIC<br /><h1>puttygen</h1>
-<p>使用puttygen.exe定位主機位置獲得key(點Generate)</p>
-<p><img alt="" height="214" src="./../images/螢幕擷取畫面 2024-01-10 212922.png" width="300"/></p>
-<p>點選之後滑鼠在視窗內持續移動至進度條跑完</p>
-<p><img alt="" height="217" src="./../images/螢幕擷取畫面 2024-01-10 213243.png" width="300"/></p>
-<p>複製ssh-rsa的內容<span>全部</span></p>
-<p>再到github帳號setting的ssh and gpg keys新增一把key</p>
-<p>把剛剛複製的key-rsa貼上之後點save private key 即可!</p>
-<p>儲存到<span>tinyc-data-home<span> </span></span>名稱:學號</p>
-<p>將鑰匙儲存在自己的USB當中</p>
-<br />ssh << <a href='ssh.html'>Previous</a> <a href='ANSIC.html'>Next</a> >> ANSIC</div>
+    <div id="tipue_search_content">Germany << <a href='Germany.html'>Previous</a> <a href='NOTE.html'>Next</a> >> NOTE<br /><h1>France</h1>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+
+int main() {
+    int width = 900; // Canvas width
+    int height = 600; // Canvas height
+
+    gdImagePtr img = gdImageCreateTrueColor(width, height);
+
+    // Define colors for the French flag
+    int blue = gdImageColorAllocate(img, 0, 35, 149);  // RGB color code
+    int white = gdImageColorAllocate(img, 255, 255, 255);
+    int red = gdImageColorAllocate(img, 239, 65, 53);
+
+    // Fill the French flag
+    gdImageFilledRectangle(img, 0, 0, width / 3, height, blue);
+    gdImageFilledRectangle(img, width / 3, 0, 2 * width / 3, height, white);
+    gdImageFilledRectangle(img, 2 * width / 3, 0, width, height, red);
+
+    // Save the image
+    FILE *outfile;
+    outfile = fopen("french_flag.png", "wb");
+    gdImagePng(img, outfile);
+    fclose(outfile);
+
+    // Free memory
+    gdImageDestroy(img);
+
+    return 0;
+}</pre>
+<p><img caption="false" height="233" src="./../images/french_flag.png" width="350"/></p>
+<br />Germany << <a href='Germany.html'>Previous</a> <a href='NOTE.html'>Next</a> >> NOTE</div>
         
     <!-- footer -->
       <div class="container">

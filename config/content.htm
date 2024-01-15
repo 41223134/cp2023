@@ -1525,6 +1525,38 @@ int main() {
     return 0;
 }</pre>
 <p><img alt="" height="267" src="/images/germany_flag.png" width="400"/></p>
+<h2>France</h2>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+
+int main() {
+    int width = 900; // Canvas width
+    int height = 600; // Canvas height
+
+    gdImagePtr img = gdImageCreateTrueColor(width, height);
+
+    // Define colors for the French flag
+    int blue = gdImageColorAllocate(img, 0, 35, 149);  // RGB color code
+    int white = gdImageColorAllocate(img, 255, 255, 255);
+    int red = gdImageColorAllocate(img, 239, 65, 53);
+
+    // Fill the French flag
+    gdImageFilledRectangle(img, 0, 0, width / 3, height, blue);
+    gdImageFilledRectangle(img, width / 3, 0, 2 * width / 3, height, white);
+    gdImageFilledRectangle(img, 2 * width / 3, 0, width, height, red);
+
+    // Save the image
+    FILE *outfile;
+    outfile = fopen("french_flag.png", "wb");
+    gdImagePng(img, outfile);
+    fclose(outfile);
+
+    // Free memory
+    gdImageDestroy(img);
+
+    return 0;
+}</pre>
+<p><img caption="false" height="233" src="/images/french_flag.png" width="350"/></p>
 <h1>NOTE</h1>
 <h2>ssh</h2>
 <p>下載putty</p>
