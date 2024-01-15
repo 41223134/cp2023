@@ -142,35 +142,44 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">4. << <a href='4..html'>Previous</a> <a href='6..html'>Next</a> >> 6.<br /><h1>5.</h1>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt; 
-
-/* 
-   Variables to store the width and height of a rectangle in inches 
-*/
-int width;          
-int height;         
-
-int area;           /* Variable to store the area of the rectangle */
-int perimeter;      /* Variable to store the perimeter of the rectangle */
-
+    <div id="tipue_search_content">Laos << <a href='Laos.html'>Previous</a> <a href='Germany.html'>Next</a> >> Germany<br /><h1>Ukraine</h1>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+   
+#define WIDTH 600
+#define HEIGHT 400
+#define YELLOW 0xFFD100  // Yellow color
+#define BLUE 0x0057A6    // Blue color
+   
+void drawUkraineFlag() {
+    gdImagePtr im;
+    FILE *output;
+   
+    im = gdImageCreateTrueColor(WIDTH, HEIGHT);
+    output = fopen("ukraine_flag.png", "wb");
+   
+    // Allocate yellow and blue colors
+    int yellowIndex = gdImageColorAllocate(im, (YELLOW &gt;&gt; 16) &amp; 0xFF, (YELLOW &gt;&gt; 8) &amp; 0xFF, YELLOW &amp; 0xFF);
+    int blueIndex = gdImageColorAllocate(im, (BLUE &gt;&gt; 16) &amp; 0xFF, (BLUE &gt;&gt; 8) &amp; 0xFF, BLUE &amp; 0xFF);
+   
+    // Draw blue upper half
+    gdImageFilledRectangle(im, 0, 0, WIDTH - 1, HEIGHT / 2 - 1, blueIndex);
+   
+    // Draw yellow lower half
+    gdImageFilledRectangle(im, 0, HEIGHT / 2, WIDTH - 1, HEIGHT - 1, yellowIndex);
+   
+    // Save the image
+    gdImagePng(im, output);
+    fclose(output);
+    gdImageDestroy(im);
+}
+   
 int main() {
-    /* Assigning values to height and width */
-    height = 3;
-    width = 4;
-
-    /* Calculating the perimeter of the rectangle */
-    perimeter = 2*(height + width);
-    printf("Perimeter of the rectangle = %d inches\n", perimeter);
-
-    /* Calculating the area of the rectangle */
-    area = height * width;
-    printf("Area of the rectangle = %d square inches\n", area);
-
-    return(0);
+    drawUkraineFlag();
+    return 0;
 }</pre>
-<p><img caption="false" height="52" src="./../images/螢幕擷取畫面 2024-01-11 213653.png" width="250"/></p>
-<br />4. << <a href='4..html'>Previous</a> <a href='6..html'>Next</a> >> 6.</div>
+<p><img alt="" height="267" src="./../images/ukraine_flag.png" width="400"/></p>
+<br />Laos << <a href='Laos.html'>Previous</a> <a href='Germany.html'>Next</a> >> Germany</div>
         
     <!-- footer -->
       <div class="container">
